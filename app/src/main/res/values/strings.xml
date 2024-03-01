@@ -2,4 +2,6 @@
     <string name="app_name">ResolutionManager</string>
     <string name="resolutions_screen_title">Resolution</string>
     <string name="resolutions">Resolutions</string>
+    <string name="group_name">Group1</string>
+    <string name="group_description">Someone posted their resolution!</string>
 </resources>
