@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ResolutionManager</string>
+    <string name="resolutions_screen_title">Resolution</string>
+    <string name="resolutions">Resolutions</string>
 </resources>
