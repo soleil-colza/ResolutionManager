@@ -32,11 +32,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -64,94 +59,4 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ResolutionManagerApp() {
     ResolutionScreen()
-}
-
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Composable
-fun ResolutionScreen(){
-    Scaffold(
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = { },
-                content = {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = null
-                    )
-                },
-                modifier = Modifier
-                    .padding(16.dp)
-                    .size(56.dp),
-                elevation = FloatingActionButtonDefaults.elevation(),
-            )
-        },
-        bottomBar = {
-            BottomNavigationBar()
-        }
-    ) {
-        Column(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            ResolutionsScreenTitle()
-            Spacer(modifier = Modifier.width(16.dp))
-            ResolutionList()
-        }
-    }
-}
-@Composable
-fun ResolutionsScreenTitle() {
-    Row(
-        modifier = Modifier.padding(32.dp)
-    ) {
-        Icon(
-            imageVector = Icons.Default.Person,
-            contentDescription = null,
-            modifier = Modifier
-                .size(40.dp)
-                .align(Alignment.CenterVertically)
-        )
-        Spacer(modifier = Modifier.width(16.dp))
-        Text(
-            text = stringResource(com.example.resolutionmanager.R.string.resolutions),
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 32.sp,
-            modifier = Modifier
-        )
-    }
-}
-
-@Composable
-fun ResolutionList() {
-    Card(
-        modifier = Modifier.padding(16.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(10.dp)
-        ) {
-
-            Text(
-                text = "Today",
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(12.dp)
-            )
-
-            Divider(thickness = 2.dp)
-
-            val tasks = listOf("Task 1", "Task 2", "Task 3")
-
-            LazyColumn {
-                items(tasks.size) { index ->
-                    ListItem(
-                        headlineContent = {
-                            Text(text = tasks[index])
-                        },
-                        leadingContent = {
-                            Checkbox(checked = false, onCheckedChange = { })
-                        }
-                    )
-                }
-            }
-
-        }
-    }
 }
