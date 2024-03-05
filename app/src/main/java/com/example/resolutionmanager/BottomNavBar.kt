@@ -1,4 +1,3 @@
-import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
@@ -21,7 +20,7 @@ sealed class BottomNavItem(val route: String, val icon: ImageVector, val label: 
 fun BottomNavBar() {
     var selectedItem = remember { mutableStateOf(0) }
     val items = listOf(BottomNavItem.Resolution, BottomNavItem.Community, BottomNavItem.Log)
-    BottomNavigation {
+    NavigationBar {
         items.forEachIndexed { index, item ->
             BottomNavigationItem(
                 icon = { Icon(item.icon, contentDescription = null) },
