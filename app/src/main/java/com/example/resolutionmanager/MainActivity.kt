@@ -2,42 +2,23 @@ package com.example.resolutionmanager
 
 import BottomNavigationBar
 import android.os.Bundle
-import android.R
-import android.annotation.SuppressLint
-import android.widget.ListView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.Card
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.Divider
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.resolutionmanager.ui.theme.ResolutionManagerTheme
 
 class MainActivity : ComponentActivity() {
@@ -58,5 +39,23 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ResolutionManagerApp() {
-    CommunityScreen()
+    var selectedItem by remember { mutableIntStateOf(0) }
+    val screens = listOf("Today", "Community", "Log")
+    val icons = listOf(Icons.Default.Check, Icons.Default.Person, Icons.Default.DateRange)
+
+    Scaffold(
+        bottomBar = {
+            BottomNavigationBar(selectedItem, screens, icons) { index ->
+                selectedItem = index as Int
+            }
+        }
+    ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            when (selectedItem) {
+                0 -> ResolutionScreen()
+                1 -> CommunityScreen()
+                2 -> LogScreen()
+            }
+        }
+    }
 }

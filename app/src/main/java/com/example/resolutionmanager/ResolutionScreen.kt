@@ -2,6 +2,7 @@ package com.example.resolutionmanager
 
 
 import BottomNavigationBar
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,6 +27,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ResolutionScreen(){
     Scaffold(
@@ -43,9 +45,6 @@ fun ResolutionScreen(){
                     .size(56.dp),
                 elevation = FloatingActionButtonDefaults.elevation(),
             )
-        },
-        bottomBar = {
-            BottomNavigationBar()
         }
     ) {
         Column(
