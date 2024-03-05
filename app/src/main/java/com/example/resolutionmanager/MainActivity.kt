@@ -1,6 +1,7 @@
 package com.example.resolutionmanager
 
-import BottomNavigationBar
+import BottomNavBar
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -37,6 +38,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ResolutionManagerApp() {
     var selectedItem by remember { mutableIntStateOf(0) }
@@ -45,9 +47,7 @@ fun ResolutionManagerApp() {
 
     Scaffold(
         bottomBar = {
-            BottomNavigationBar(selectedItem, screens, icons) { index ->
-                selectedItem = index as Int
-            }
+            BottomNavBar()
         }
     ) {
         Box(modifier = Modifier.fillMaxSize()) {

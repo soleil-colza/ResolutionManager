@@ -1,7 +1,7 @@
 package com.example.resolutionmanager
 
 
-import BottomNavigationBar
+import BottomNavBar
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +19,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -45,7 +46,8 @@ fun ResolutionScreen(){
                     .size(56.dp),
                 elevation = FloatingActionButtonDefaults.elevation(),
             )
-        }
+        },
+        bottomBar = { BottomNavBar() }
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
