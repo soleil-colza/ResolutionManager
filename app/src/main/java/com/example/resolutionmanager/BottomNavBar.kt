@@ -11,13 +11,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.navigation.NavHostController
+
 sealed class BottomNavItem(val route: String, val icon: ImageVector, val label: String) {
     data object Resolution : BottomNavItem("resolution", Icons.Default.Star, "Resolution")
     data object Community : BottomNavItem("community", Icons.Default.Person, "Community")
     data object Log : BottomNavItem("log", Icons.Default.DateRange, "Log")
 }
 @Composable
-fun BottomNavBar() {
+fun BottomNavBar(navController: NavHostController) {
     var selectedItem = remember { mutableStateOf(0) }
     val items = listOf(BottomNavItem.Resolution, BottomNavItem.Community, BottomNavItem.Log)
     NavigationBar {
@@ -26,7 +28,10 @@ fun BottomNavBar() {
                 icon = { Icon(item.icon, contentDescription = null) },
                 label = { Text(item.toString()) },
                 selected = selectedItem.value == index,
-                onClick = { selectedItem.value = index }
+                onClick = {
+                    selectedItem.value = index
+                    navController.navigate(item.route)
+                }
             )
         }
     }
